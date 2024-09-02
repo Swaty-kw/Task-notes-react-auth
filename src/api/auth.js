@@ -26,5 +26,8 @@ const getAllUsers = async () => {
   const { data } = await instance.get("/auth/users");
   return data;
 };
+const logout = () => {
+  localStorage.removeItem("token");
+};
 
 export { getAllUsers, me, register, login };

@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { formData, login } from "../api/auth";
 import { useMutation } from "@tanstack/react-query";
-import usercontext from "../context/userContext";
+import UserContext from "../context/userContext";
 import { Navigate } from "react-router-dom";
+import { deleteToken } from "../api/storage";
 const Login = () => {
   const [userInfo, setUserInfo] = useState({});
-  const [user, setUser] = useContext(usercontext);
+  const [user, setUser] = useContext(UserContext);
 
   const handleChange = (e) => {
     setUserInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -17,6 +18,10 @@ const Login = () => {
       setUser(true);
     },
   });
+  // const handleLogout = () => {
+  //   deleteToken();
+  //   setUser(false);
+  // };
   const handleFormSubmit = (e) => {
     e.preventDefault();
     mutate();

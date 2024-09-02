@@ -8,5 +8,13 @@ const getToken = () => {
 const deleteToken = () => {
   localStorage.removeItem("token");
 };
+const checkToken = () => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
-export { setToken, getToken, deleteToken };
+export { setToken, getToken, deleteToken, checkToken };
